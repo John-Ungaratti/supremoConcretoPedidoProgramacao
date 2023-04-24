@@ -1,0 +1,720 @@
+<style>
+    h3.h3 {
+        text-align: center;
+        margin: 1em;
+        text-transform: capitalize;
+        font-size: 1.7em;
+    }
+
+    @media only screen and (max-width:990px) {
+        .product-grid6 {
+            margin-bottom: 30px
+        }
+    }
+
+    .modal {
+        text-align: center;
+    }
+
+    @media screen and (min-width: 768px) {
+        .modal:before {
+            display: inline-block;
+            vertical-align: middle;
+            content: " ";
+            height: 100%;
+        }
+    }
+
+    .modal-dialog {
+        width: 820px;
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .input-em-linha {
+        border-top-style: none;
+        border-left-style: none;
+        border-right-style: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .modal-cor-fundo {
+
+        background-color: #e7e7e7;
+    }
+
+    .modal-menor {
+        text-align: center;
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .painel-programacao {
+        width: 82%;
+        margin-top: 3%;
+        margin-left: 10%;
+    }
+
+    .botao-lado-esquerdo {
+        margin-left: 75%;
+    }
+
+
+    .botao-tela-inicial {
+        font-size: 20px;
+    }
+
+    .ul-sem-marker {
+        list-style: none;
+        margin-bottom: -8%;
+        margin-left: -7%;
+    }
+</style>
+
+<!-- Incio -->
+<div>
+    <!-- Modal -->
+    <form id="formModal1">
+        <div class="modal fade modal-cor-fundo" id="modal1" tabindex="-1" data-backdrop="static"  data-keyboard="false">
+            <div class="modal-dialog" role="document">
+                <div class="progress">
+                    <div class="progress-bar " role="progressbar" style="width: 1%; background-color: #33cc33"
+                        aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel1">Selecione a central</h5>
+                    </div>
+                    <div id="escolhaCentral" class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="abreModal2" type="submit" class="btn btn-warning"
+                            onClick="montaModal2()">Próximo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="formModal2">
+        <div class="modal fade modal-cor-fundo" data-backdrop="static" id="modal2" tabindex="-1"  data-keyboard="false">
+            <div class="modal-dialog" role="document">
+                <div class="progress">
+                    <div class="progress-bar " role="progressbar" style="width: 25%; background-color: #33cc33"
+                        aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel1">Selecione um contrato</h5>
+                    </div>
+                    <div id="escolhaContrato" class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="voltaModal_1" type="button" class="btn btn-primary">Anterior</button>
+                        <button id="abreModal3" type="submit" class="btn btn-warning"
+                            onClick="montaModal3()">Próximo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="formModal3">
+        <div class="modal fade modal-cor-fundo" data-backdrop="static" id="modal3" role="dialog"
+            style="overflow-y: scroll"  data-keyboard="false"> 
+            <div class="modal-dialog" role="document">
+                <div class="progress" style="margin-top: 40px; margin-bottom: 20px">
+                    <div class="progress-bar " role="progressbar" style="width: 50%; background-color: #33cc33"
+                        aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel2">Selecione os Traços</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <table class="table caption-top">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Selecione o traço</th>
+                                        <th style="text-align: center;" scope="col">Qtd. Negocioada</th>
+                                        <th scope="col">Preço</th>
+                                        <th scope="col">Qtd. Aberto</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="escolhaTraco">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="voltaModal_2" type="button" class="btn btn-primary">Anterior</button>
+                        <button id="abreModal4" type="submit" class="btn btn-warning"
+                            onClick="montaModal4()">Próximo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="formModal4">
+        <div class="modal fade modal-cor-fundo" id="modal4" data-backdrop="static" tabindex="-1"
+            style="overflow-y: scroll"  data-keyboard="false">
+            <div class="modal-dialog" role="document" style="margin-top: 5%;">
+                <div class="progress">
+                    <div class="progress-bar " role="progressbar"
+                        style="width: 75%; background-color: #33cc33"" aria-valuenow=" 5" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel1">Confirmar pré-programação</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div id="centralSelecionada" class="col-md-6"></div>
+
+                            <div id="enderecoContratoSelecionado" class="col-md-6"></div>
+
+                            <div class="col-md-6" style="margin-top: 15px">
+                                <label for="tipoBomba" class="form-label"> Selecione um tipo de bomba:</label>
+                                <select class="form-select" id="tipoBomba" required="true">
+                                    <option select value="Sem bomba">--- Sem bomba ---</option>
+                                    <option value="Bomba Estacionária">Bomba Estacionária</option>
+                                    <option value="Bomba Lança">Bomba Lança</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6" style="margin-top: 15px">
+                                <label for="tipoAplicacao" class="form-label"> Escolha o tipo de aplicação:</label>
+                                <select class="form-select" id="tipoAplicacao" required>
+                                    <option selected disabled value="">Selecione ...</option>
+                                    <option value="Laje">Laje</option>
+                                    <option value="Piso">Piso</option>
+                                    <option value="Hélice">Hélice</option>
+                                    <option value="Blocos">Blocos</option>
+                                    <option value="Pré-moldado">Pré-moldado</option>
+                                    <option value="Meio Fio">Meio Fio</option>
+                                    <option value="Alameda">Alameda</option>
+                                    <option value="Pilar">Pilar</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <hr>
+
+                        <div id="resumoTracoSelecionado" class="container-fluid">
+                            <table class="table caption-top">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Traço</th>
+                                        <th scope="col">Qtd. Negocioada</th>
+                                        <th scope="col">Qtd. Aberto</th>
+                                        <th scope="col" style="width: 17%;"> Qtd. Programada</th>
+                                        <th scope="col">Saldo Final</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resumoTraco">
+                                </tbody>
+                            </table>
+
+                            <table class="table caption-top">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Responsável pela obra</th>
+                                        <th scope="col">Contato</th>
+                                        <th scope="col">Data Programação</th>
+                                        <th scope="col">Observação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input id="nomeRespObra" class="input-em-linha" style="padding-top: 15px"
+                                                required /></td>
+                                        <td><input id="contatoRespObra" type="tel"
+                                                onkeydown="return mascaraTelefone(event)"
+                                                placeholder="Digite o telefone para contato" class="input-em-linha"
+                                                style="padding-top: 15px" required /></td>
+                                        <td><input id="dataProgramacao" type="date" class="input-em-linha" required /></td>
+                                        <td><input id="obsProg" type="text"  style="padding-top: 15px" class="input-em-linha" placeholder="Informe alguma observação"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button id="voltaModal_3" type="button" class="btn btn-primary">Anterior</button>
+                            <button id="abreModal5" type="submit" class="btn btn-warning">Próximo</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="modal fade modal-cor-fundo" id="modal5" data-backdrop="static" tabindex="-1"  data-keyboard="false">
+
+        <div class="modal-dialog" role="document">
+            <div class="progress">
+                <div class="progress-bar " role="progressbar" style="width: 100%; background-color: #33cc33"
+                    aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="alert alert-warning" role="alert">
+                        <center>
+                            <i class="fa fa-check-circle fa-10x center" aria-hidden="true"></i>
+                            <hr>
+                            <b class="fundoAzul">Solicitação de programação efetuada com sucesso!</b>
+                            <br>
+                            <b class="fundoAzul">Aguarde a confirmação da nossa equipe.</b>
+                        </center>
+                    </div>
+                    <center>
+                        <button id="concluir" type="button" class="btn btn-warning">Nova programação</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalQuantidadeProgramada" class="modal fade bd--modal-sm">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content modal-menor">
+                <div class="modal-header">
+                    <h5 style="text-align:initial">Ops... verifique o campo do texto abaixo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"
+                        style="margin-top: -35px;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <label>O valor do campo "Qtd. Programada" não deve ser menor que 3!</label>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Fim -->
+
+
+<script type="text/javascript">
+
+    var jsonProg;
+    var centralSel;
+    var contratoSel;
+    var tracoSel;
+    var enderecoSel;
+    var qtdAbertoSel;
+    var tracoDes;
+
+    function montaJson() {
+        var central = document.getElementById("inputCentralSelecionada").value;
+        var tipoBombaSel = document.getElementById("tipoBomba").value;
+        var tipoAplicacaoSel = document.getElementById("tipoAplicacao").value;
+        var qtdSolicitada = document.getElementById("inputQtdSolicitada").value;
+        var saldoFinal = document.getElementById("saldoFinal").innerText;
+        var respObra = document.getElementById("nomeRespObra").value;
+        var contatoRespObra = document.getElementById("contatoRespObra").value;
+        var dataProgramacaoSel = document.getElementById("dataProgramacao").value;
+        var observacaoSel = document.getElementById("obsProg").value;
+
+        jsonProg = {
+            "central": central,
+            "contrato": contratoSel,
+            "endereco": enderecoSel,
+            "tipoBomba": tipoBombaSel, 
+            "tipoAplicacao": tipoAplicacaoSel,
+            "tracoSel": tracoSel,
+            "tracoSelDes": tracoDes,
+            "qtdSolicitada": qtdSolicitada,
+            "qtdAberto": qtdAbertoSel,
+            "respObra": respObra,
+            "contatoRespObra": contatoRespObra,
+            "dataProgramacaoSel": dataProgramacaoSel,
+            "observacao": observacaoSel,
+            "situacao": "Pendente"
+        };
+    }
+
+    function enviarProgramacao() {
+
+        var parametros = {
+            idCvtccnpj: dadosUserLogado().cId,
+            numreg: 751,
+            pRotina: "solicitarProgramacao",
+            pCodCli: parent.dadosUserLogadoPersonalizado().rCod,
+            pJson: jsonProg
+        };
+
+        $.ajax({
+            url: dadosUserLogado().cContextIntegracao + '/rest/Listas/executarRequisicaoExterna',
+            type: "POST",
+            data: JSON.stringify(parametros),
+            success: function (response) {
+            },
+            beforeSend: function () {
+                $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+            },
+            complete: function () {
+                $("#loadingModal").modal('hide');
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    }
+
+    $("#concluir").click(function () {
+        $("#modal1").modal('show');
+        $("#modal5").modal('hide');
+        $("#formModal1")[0].reset();
+        $("#formModal2")[0].reset();
+        $("#formModal3")[0].reset();
+        $("#formModal4")[0].reset();
+    });
+
+    function mascaraTelefone(event) {
+        let tecla = event.key;
+        let telefone = event.target.value.replace(/\D+/g, "");
+
+        if (/^[0-9]$/i.test(tecla)) {
+            telefone = telefone + tecla;
+            let tamanho = telefone.length;
+
+            if (tamanho >= 12) {
+                return false;
+            }
+
+            if (tamanho > 10) {
+                telefone = telefone.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+            } else if (tamanho > 5) {
+                telefone = telefone.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+            } else if (tamanho > 2) {
+                telefone = telefone.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+            } else {
+                telefone = telefone.replace(/^(\d*)/, "($1");
+            }
+
+            event.target.value = telefone;
+        }
+
+        if (!["Backspace", "Delete"].includes(tecla)) {
+            return false;
+        }
+    }
+
+    $(document).ready(function () {
+        $(listaCentral());
+        $('#modal1').modal('show');
+    });
+
+    function listaCentral() {
+
+        var parametros = {
+            idCvtccnpj: dadosUserLogado().cId,
+            numreg: 751,
+            pRotina: "listarCentral"
+        };
+
+        $.ajax({
+            url: dadosUserLogado().cContextIntegracao + '/rest/Listas/executarRequisicaoExterna',
+            type: "POST",
+            data: JSON.stringify(parametros),
+            success: function (response) {
+
+                var objRetorno = JSON.parse(response);
+
+                var centraisHTML = "";
+
+                objRetorno.map(({ central }) => {
+                    centraisHTML += `<div class="form-check">
+										<input class="form-check-input " type="radio" name="escolhaCentral" id="check1-${central}" value="${central}" required >
+										<label class="form-check-label" for="check1-${central}"> ${central} </label>
+										</div>`
+                });
+
+                document.getElementById("escolhaCentral").innerHTML = centraisHTML;
+
+            },
+            beforeSend: function () {
+                $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+            },
+            complete: function () {
+                $("#loadingModal").modal('hide');
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    };
+
+
+    var dadosCentral;
+
+    var dadosContratoSelecionado;
+
+    var dadosTracoSelecionado;
+
+
+    function montaModal2() {
+
+        var parametros = {
+            idCvtccnpj: dadosUserLogado().cId,
+            numreg: 751,
+            pRotina: "listarCentral"
+        };
+
+        $.ajax({
+            url: dadosUserLogado().cContextIntegracao + '/rest/Listas/executarRequisicaoExterna',
+            type: "POST",
+            data: JSON.stringify(parametros),
+            success: function (response) {
+                var objRetorno = JSON.parse(response);
+
+                var nomeCentral = document.querySelector(`input[name="escolhaCentral"]:checked`).value;
+
+                dadosCentral = objRetorno.filter(({ central }) => central == nomeCentral)[0];
+
+                var contratosCentralHTML = "";
+
+                centralSel = dadosCentral.id;
+
+                dadosCentral.contratos.map(({ numeroContrato }) => { contratoSel = numeroContrato });
+
+                dadosCentral.contratos.map(({ enderecoEntrega, numeroContrato }) => {
+
+                    enderecoSel = enderecoEntrega;
+
+                    contratosCentralHTML += `<div class="form-check">
+											   <input class="form-check-input" type="radio" name="escolhaContrato" id="check2-${numeroContrato}" value="${numeroContrato}" required>
+											   <label class="form-check-label" for="check2-${numeroContrato}">Contrato nº${numeroContrato} - Endereço: ${enderecoEntrega} </label>
+											  </div>`;
+                });
+
+                document.getElementById("escolhaContrato").innerHTML = contratosCentralHTML;
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                $("#loadingModal").modal('hide');
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    };
+
+    $("#abreModal2").click(function () {
+        var formulario = document.getElementById("formModal1");
+        if (!formulario.checkValidity()) {
+        }
+        else {
+            $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+            $("#modal2").modal();
+            $("#modal1").modal('hide');
+        }
+    });
+
+    /* volta modal 1*/
+    $("#voltaModal_1").click(function () {
+        $("#modal1").modal('show');
+        $("#modal2").modal('hide');
+    });
+
+
+    function montaModal3() {
+
+        var parametros = {
+            idCvtccnpj: dadosUserLogado().cId,
+            numreg: 751,
+            pRotina: "listarCentral"
+        };
+
+        $.ajax({
+            url: dadosUserLogado().cContextIntegracao + '/rest/Listas/executarRequisicaoExterna',
+            type: "POST",
+            data: JSON.stringify(parametros),
+            success: function (response) {
+                var objRetorno = JSON.parse(response);
+
+                var contratoSelecionado = document.querySelector(`input[name="escolhaContrato"]:checked`).value;
+
+                dadosContratoSelecionado = dadosCentral.contratos.filter(({ numeroContrato }) => numeroContrato == contratoSelecionado)[0];
+
+                var tracoHTML = "";
+
+                dadosContratoSelecionado.tracos.map(({ descricaoTraco, qtdPedido, preUni, qtdAberto }) => {
+
+
+                    tracoHTML += `<tr>
+							 <th scope="row">
+								 <div class="form-check">
+									 <input class="form-check-input" type="radio" name="escolhaTraco" id="radioTraco-${descricaoTraco}" value="${descricaoTraco}" required >
+									 <label class="form-check-label" for="radioTraco-${descricaoTraco}">${descricaoTraco}</label>
+								 </div>
+							 </th>
+							 <td style="text-align: center">${qtdPedido}</td>
+							 <td class="money">${preUni}</td>
+							 <td>${qtdAberto}</td>
+						</tr>`;
+                });
+                document.getElementById("escolhaTraco").innerHTML = tracoHTML;
+            },
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                $("#loadingModal").modal('hide');
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    };
+
+    $("#abreModal3").click(function () {
+        var formulario = document.getElementById("formModal2");
+        if (!formulario.checkValidity()) {
+        }
+        else {
+            $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+            $("#modal3").modal();
+            $("#modal2").modal('hide');
+        }
+    });
+
+    /* volta modal 2*/
+    $("#voltaModal_2").click(function () {
+        $("#modal2").modal();
+        $("#modal3").modal('hide');
+    });
+
+
+    function montaModal4() {
+
+        var parametros = {
+            idCvtccnpj: dadosUserLogado().cId,
+            numreg: 751,
+            pRotina: "listarCentral"
+        };
+
+        $.ajax({
+            url: dadosUserLogado().cContextIntegracao + '/rest/Listas/executarRequisicaoExterna',
+            type: "POST",
+            data: JSON.stringify(parametros),
+            success: function (response) {
+                var objRetorno = JSON.parse(response);
+
+                var tracoSelecionado = document.querySelector(`input[name="escolhaTraco"]:checked`).value;
+
+                tracoDes = tracoSelecionado;
+
+                dadosTracoSelecionado = dadosContratoSelecionado.tracos.filter(({ descricaoTraco }) => descricaoTraco == tracoSelecionado)[0];
+
+
+                tracoSel = dadosTracoSelecionado.id;
+
+                var centralHTML = "";
+
+                centralHTML += `<label>Central</label>
+												<input id="inputCentralSelecionada" name="centralSelecionada"
+												class="form-control" value="${dadosCentral.central}" disabled></input>`;
+
+                document.getElementById("centralSelecionada").innerHTML = centralHTML;
+
+                var enderecoContratoSelecionadoHTML = "";
+
+                enderecoContratoSelecionadoHTML += ` <label>Contrato</label>
+													<input id="inputContratoSelecionado" name="enderecoContratoSelecionado"
+													class="form-control" disabled
+													value=" nº${dadosContratoSelecionado.numeroContrato} - Endereço: ${dadosContratoSelecionado.enderecoEntrega}"></input>`;
+
+                document.getElementById("enderecoContratoSelecionado").innerHTML = enderecoContratoSelecionadoHTML;
+
+                var resumoTracoHTML = "";
+
+                qtdAbertoSel = dadosTracoSelecionado.qtdAberto;
+
+                console.log(qtdAbertoSel);
+
+                resumoTracoHTML += `<tr>
+										<th id="traco" scope="row">${dadosTracoSelecionado.descricaoTraco}</th>
+										<td>${dadosTracoSelecionado.qtdPedido} </td>
+										<td>${dadosTracoSelecionado.qtdAberto} </td>									
+										<td> <input id="inputQtdSolicitada" type="number" class="input-em-linha" required onblur="atualizaSaldo(this)"/></td>
+										<td style="text-align:center" id="saldoFinal"></td>
+									</tr>`;
+
+                document.getElementById("resumoTraco").innerHTML = resumoTracoHTML;
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                $("#loadingModal").modal('hide');
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    };
+
+    $("#abreModal4").click(function () {
+        var formulario = document.getElementById("formModal3");
+        if (!formulario.checkValidity()) {
+        }
+        else {
+            $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+            $("#modal4").modal();
+            $("#modal3").modal('hide');
+        }
+    });
+
+    /* volta modal 3*/
+    $("#voltaModal_3").click(function () {
+        $("#modal3").modal();
+        $("#modal4").modal('hide');
+    });
+
+    function atualizaSaldo(ev) {
+
+        if (ev.value < 3) {
+            document.getElementById("abreModal5").disabled = true;
+            $("#modalQuantidadeProgramada").modal('show');
+        } else {
+            document.getElementById("abreModal5").disabled = false;
+
+            saldoFinal = parseInt(dadosTracoSelecionado.qtdAberto) - ev.value;
+
+            saldoFinalHTML = "";
+
+            saldoFinalHTML += saldoFinal;
+
+            document.getElementById("saldoFinal").innerHTML = saldoFinalHTML;
+        }
+
+    };
+
+    /* abre modal 5*/
+    $("#abreModal5").click(function () {
+        var formulario = document.getElementById("formModal4");
+        if (!formulario.checkValidity()) {
+        }
+        else {
+            montaJson();
+            enviarProgramacao();
+            $("#modal5").modal();
+            $("#modal4").modal('hide');
+        }
+    });
+
+</script>
